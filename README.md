@@ -53,8 +53,6 @@ Removes perspective distortion for lane alignment. Uses cv2.findHomography and c
 V channel (brightness): Enhances contrast.
 
 <img width="422" alt="image" src="https://github.com/user-attachments/assets/dcdce56f-4add-42a2-b8ca-cc491c84c924" />
-
-
 <img width="353" alt="image" src="https://github.com/user-attachments/assets/e2161cf4-62ee-4ea4-9dae-0ee389b1f046" />
 
 S channel (saturation): Improves color clarity.
