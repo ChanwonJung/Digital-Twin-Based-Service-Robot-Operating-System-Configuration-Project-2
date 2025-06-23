@@ -92,16 +92,14 @@ Keeps only the largest connected component, effectively removing noise missed by
 
 
 #### 📈 5) Polynomial Fitting & Center Line Calculation
-Used np.polyfit() to model lanes with a 2nd-degree polynomial:
-
-a: curvature, b: slope, c: intercept.
+Used a second-degree polynomial curve fitting in the form of x = Ay² + By + C using np.polyfit().
+To enable smoother and gentler cornering, we reduced the A coefficient slightly and increased the B coefficient, making the turning behavior more gradual and stable.
 
 <img width="202" alt="image" src="https://github.com/user-attachments/assets/aa960a3e-6e01-45b1-85c0-9a668b58f795" />
 
+The red and light blue lanes represent the curve before coefficient adjustment, while the orange and light blue lanes represent the curve after applying the adjusted coefficients.
 
-If both lanes are detected, the midpoint is calculated.
-
-If only one lane is detected, the path is estimated 350px from that lane.
+Also if both lanes are detected, the midpoint is calculated. If only one lane is detected, the path is estimated 350px from that lane.
 
 #### 🧠 6) Dynamic Threshold Adjustment
 Automatically adjusts the V (brightness) value based on the number of masked pixels.
