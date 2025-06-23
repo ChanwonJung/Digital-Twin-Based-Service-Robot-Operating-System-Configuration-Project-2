@@ -2,6 +2,9 @@
 
 ## 1. Project Overview
 
+<img width="557" alt="image" src="https://github.com/user-attachments/assets/aaf7a9ed-fe61-4c66-954a-5d338d66db44" />
+
+
 🔹 Background of Topic Selection
 
 As autonomous driving technology continues to expand, the importance of camera-based visual recognition has increased.
