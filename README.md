@@ -178,3 +178,27 @@ https://drive.google.com/file/d/1BRyIH8yQ3AaU35Ih1dRi5DRQY31I70fs/view?usp=drive
 
 https://drive.google.com/file/d/1hqbYXowimGbrBbTyqLsK_fHKh3g4IQIR/view?usp=drive_link
 
+## 🔧 How to Run
+> ROS2 Humble + Gazebo11 + TurtleBot3 environment
+```bash
+# 1. Launch the turtlebot3_manipulation_bringup
+$ ros2 launch turtlebot_manipulation_bringup hardware.launch.py
+
+# 2. Launch the turtlebot3_manipulation_moveit_config
+$ ros2 launch turtlebot3_manipulation_moveit_config moveit_core.launch.py
+
+# 3. Run the arm_controller
+$ ros2 run turtlebot_moveit turtlebot_arm_controller
+
+# 4. Execute Lane Detection
+$ python3 turtle_pubimg.py
+
+# 5. Execute Lane Control
+$ ros2 launch turtlebot3_autorace_mission control_lane.launch.py
+
+# 6. Run Aruco_detector
+$ ros2 run aruco_yolo aruco_detector
+
+# 7. Run task_aruco
+$ python3 task_aruco.py
+
