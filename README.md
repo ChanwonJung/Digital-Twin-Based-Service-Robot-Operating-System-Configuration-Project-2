@@ -180,7 +180,7 @@ https://drive.google.com/file/d/1BRyIH8yQ3AaU35Ih1dRi5DRQY31I70fs/view?usp=drive
 https://drive.google.com/file/d/1hqbYXowimGbrBbTyqLsK_fHKh3g4IQIR/view?usp=drive_link
 
 ## 🔧 How to Run
-> ROS2 Humble + Gazebo11 + TurtleBot3 environment
+> ROS2 Humble + TurtleBot3 waffle-pi manipulator environment
 ```bash
 # 1. Launch the turtlebot3_manipulation_bringup
 $ ros2 launch turtlebot_manipulation_bringup hardware.launch.py
