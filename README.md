@@ -18,9 +18,7 @@ TurtleBot3 Waffle Pi, DRGO Webcam, Dynamixel Manipulator, Nvidia Jetson Nano, Ar
 
 🔹 Expected Outcomes
 
-Develop driving technologies applicable to various service robots such as logistics, guidance, and surveillance.
-
-Enhance understanding of image processing and autonomous driving algorithms.
+Develop driving technologies applicable to various service robots such as logistics, guidance, and surveillance. Enhance understanding of image processing and autonomous driving algorithms.
 
 
 ## 🛣️ 2. Project Execution – Lane Detection & Control
@@ -31,29 +29,39 @@ HSV Conversion → Bird’s Eye View Transformation → Masking → Polynomial F
 #### 🧪 1) Image Preprocessing & HSV Masking
 ▶ HSV Color Space Conversion
 
-Used to detect white and yellow lanes.
+Used to detect white and yellow lanes. Applied color filtering using cv2.inRange().
 
-Applied color filtering using cv2.inRange().
+<img width="341" alt="image" src="https://github.com/user-attachments/assets/821f3815-be4d-409b-a4ca-37f4cc80fd1d" />
+
 
 ▶ Trackbar (Control Panel)
 
-GUI to adjust HSV ranges and Region of Interest (ROI) in real-time.
+GUI to adjust HSV ranges and Region of Interest (ROI) in real-time. Allows users to tune optimal lane detection parameters interactively.
 
-Allows users to tune optimal lane detection parameters interactively.
+<img width="189" alt="image" src="https://github.com/user-attachments/assets/c5cb74d4-e86a-4ebe-a504-b3a5d363ad3b" />
+
 
 #### 🧭 2) Bird’s Eye View Transformation
-Removes perspective distortion for lane alignment.
+Removes perspective distortion for lane alignment. Uses cv2.findHomography and cv2.warpPerspective. Improves the accuracy of curvature calculation and path estimation.
 
-Uses cv2.findHomography and cv2.warpPerspective.
+<img width="266" alt="image" src="https://github.com/user-attachments/assets/81465f92-42bc-4b46-9228-4f0b9df7f0f8" />
 
-Improves the accuracy of curvature calculation and path estimation.
 
 #### 🌟 3) Histogram Equalization + CLAHE
 ▶ Histogram Equalization
 
 V channel (brightness): Enhances contrast.
 
+<img width="422" alt="image" src="https://github.com/user-attachments/assets/dcdce56f-4add-42a2-b8ca-cc491c84c924" />
+
+
+<img width="353" alt="image" src="https://github.com/user-attachments/assets/e2161cf4-62ee-4ea4-9dae-0ee389b1f046" />
+
 S channel (saturation): Improves color clarity.
+
+<img width="385" alt="image" src="https://github.com/user-attachments/assets/c3624b9b-3dbc-45b6-a626-30475b71fdd3" />
+
+<img width="302" alt="image" src="https://github.com/user-attachments/assets/1e55dcca-4703-40dc-9d22-4f31b7330dfa" />
 
 ▶ CLAHE (Contrast Limited Adaptive Histogram Equalization)
 
@@ -61,23 +69,37 @@ Solves over-brightening issue in global equalization by applying localized corre
 
 Ensures robust recognition under varying lighting and reflections.
 
+<img width="443" alt="image" src="https://github.com/user-attachments/assets/54b63166-4633-47bd-9c46-0d036f6eb44b" />
+
 #### 🧼 4) Noise Removal Techniques
 ▶ Overlapping Mask Removal
 
 If yellow and white masks overlap due to reflections, prioritize the yellow mask.
 
+<img width="284" alt="image" src="https://github.com/user-attachments/assets/8c25223a-e05c-4f0f-a6e1-e624c64d49d4" />
+
+
 ▶ Morphology – Erosion
 
 Removes small noise (e.g., crosswalks) using a structural kernel to erode unnecessary areas.
+
+<img width="418" alt="image" src="https://github.com/user-attachments/assets/ecea8ebc-e7d5-4b7c-aed6-96ca68e7edf4" />
+
 
 ▶ Labeling
 
 Keeps only the largest connected component, effectively removing noise missed by morphology.
 
+<img width="287" alt="image" src="https://github.com/user-attachments/assets/c117477f-8462-4507-b768-732541842429" />
+
+
 #### 📈 5) Polynomial Fitting & Center Line Calculation
 Used np.polyfit() to model lanes with a 2nd-degree polynomial:
 
 a: curvature, b: slope, c: intercept.
+
+<img width="202" alt="image" src="https://github.com/user-attachments/assets/aa960a3e-6e01-45b1-85c0-9a668b58f795" />
+
 
 If both lanes are detected, the midpoint is calculated.
 
@@ -113,9 +135,7 @@ Kp = 0.0025, Kd = 0.007
 
 ## 3. ArUco Marker Detection & Manipulation
 🔹 Marker Detection
-Utilized OpenCV’s ArUco library.
-
-Detected markers → Pose Estimation → Homography → Transformed to robot base coordinates.
+Utilized OpenCV’s ArUco library. Detected markers → Pose Estimation → Homography → Transformed to robot base coordinates.
 
 🔹 Manipulator Control
 Upon marker detection:
@@ -135,6 +155,9 @@ Designed to evaluate performance under lighting reflections and shadows.
 
 Adjusted HSV ranges, applied histogram equalization, CLAHE, and removed mask overlaps.
 
+<img width="307" alt="image" src="https://github.com/user-attachments/assets/4a2debea-aa70-4d05-9d6e-aa424c9940a1" />
+
+
 ### 🚗 Speed Control
 linear.x = min(((1 - abs(error)/500) ** 2.2), 0.1)
 As error increases, speed decreases sharply to ensure safe cornering.
@@ -145,3 +168,5 @@ When ArUco marker is detected:
 → /robot_state = slow      # Reduce speed at a distance
 → /robot_state = stop      # Stop near the marker
 → /robot_state = drive     # Resume driving after manipulation
+
+## 5. Demo
