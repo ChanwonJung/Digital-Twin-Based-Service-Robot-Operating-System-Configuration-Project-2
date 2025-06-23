@@ -76,6 +76,7 @@ Keeps only the largest connected component, effectively removing noise missed by
 
 #### 📈 5) Polynomial Fitting & Center Line Calculation
 Used np.polyfit() to model lanes with a 2nd-degree polynomial:
+
 a: curvature, b: slope, c: intercept.
 
 If both lanes are detected, the midpoint is calculated.
