@@ -130,7 +130,7 @@ error = center - 500  # based on image center
 angular.z = Kp * error + Kd * (error - last_error)
 Kp = 0.0025, Kd = 0.007
 
--> Ensures smooth turning and fast directional adjustment.
+→ Ensures smooth turning and fast directional adjustment.
 
 ## 3. ArUco Marker Detection & Manipulation
 🔹 Marker Detection
@@ -159,7 +159,8 @@ Adjusted HSV ranges, applied histogram equalization, CLAHE, and removed mask ove
 
 ### 🚗 Speed Control
 linear.x = min(((1 - abs(error)/500) ** 2.2), 0.1)
-As error increases, speed decreases sharply to ensure safe cornering.
+
+→ As error increases, speed decreases sharply to ensure safe cornering.
 
 ### 🔄 Obstacle Avoidance Mode Integration
 When ArUco marker is detected:
@@ -169,3 +170,11 @@ When ArUco marker is detected:
 → /robot_state = drive     # Resume driving after manipulation
 
 ## 5. Demo
+### Lane-following driving video
+
+https://drive.google.com/file/d/1BRyIH8yQ3AaU35Ih1dRi5DRQY31I70fs/view?usp=drive_link
+
+### Pick and place operation after ArUco marker detection
+
+https://drive.google.com/file/d/1hqbYXowimGbrBbTyqLsK_fHKh3g4IQIR/view?usp=drive_link
+
