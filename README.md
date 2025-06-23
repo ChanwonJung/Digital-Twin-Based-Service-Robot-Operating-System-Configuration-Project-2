@@ -90,25 +90,26 @@ Ensures stable lane recognition even under changing lighting conditions.
 
 ### 🤖 B. Control Logic (control_lane.py)
 ▶ ROS2-Based Control Node Configuration
-Subscribers:
 
-/control/lane, /control/max_vel, /avoid_control, /robot_state
+Subscribers: /control/lane, /control/max_vel, /avoid_control, /robot_state
 
-Publisher:
+Publisher: /control/cmd_vel (velocity command)
 
-/control/cmd_vel (velocity command)
+<img width="589" alt="image" src="https://github.com/user-attachments/assets/28995864-a10c-4a4e-bbbe-858452fc5017" />
+
 
 ▶ PD Controller-Based Lane Following
 
 📐 Error Calculation
 
 error = center - 500  # based on image center
+
 ⚙️ Control Formula
 
 angular.z = Kp * error + Kd * (error - last_error)
 Kp = 0.0025, Kd = 0.007
 
-Ensures smooth turning and fast directional adjustment.
+-> Ensures smooth turning and fast directional adjustment.
 
 ## 3. ArUco Marker Detection & Manipulation
 🔹 Marker Detection
